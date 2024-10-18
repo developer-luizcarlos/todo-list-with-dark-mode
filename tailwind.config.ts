@@ -9,8 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'bright-blue': 'hsl(220, 98%, 61%)',
+        'check-background': 'linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
+
+        // Neutral
+        'very-light-gray': 'hsl(0, 0%, 98%)',
+        'very-light-grayish-blue': 'hsl(236, 33%, 92%)',
+        'light-grayish-blue': 'hsl(233, 11%, 84%)',
+        'dark-grayish-blue': 'hsl(236, 9%, 61%)',
+        'very-dark-grayish-blue': 'hsl(235, 19%, 35%)',
+
+        // Light Theme
+        'light-theme-very-light-gray': 'hsl(0, 0%, 98%)',
+        'light-theme-very-light-grayish-blue': 'hsl(236, 33%, 92%)',
+        'light-theme-light-grayish-blue': 'hsl(233, 11%, 84%)',
+        'light-theme-dark-grayish-blue': 'hsl(236, 9%, 61%)',
+        'light-theme-very-dark-grayish-blue': 'hsl(235, 19%, 35%)',
+
+        // Dark Theme
+        'dark-theme-very-dark-blue': 'hsl(235, 21%, 11%)',
+        'dark-theme-very-dark-desaturated-blue': 'hsl(235, 24%, 19%)',
+        'dark-theme-light-grayish-blue': 'hsl(234, 39%, 85%)',
+        'dark-theme-light-grayish-blue-hover': 'hsl(236, 33%, 92%)',
+        'dark-theme-dark-grayish-blue': 'hsl(234, 11%, 52%)',
+        'dark-theme-very-dark-grayish-blue-1': 'hsl(233, 14%, 35%)',
+        'dark-theme-very-dark-grayish-blue-2': 'hsl(237, 14%, 26%)'
+      },
+      backgroundImage: {
+        'header-dark-desktop': "url('/images/bg-desktop-dark.jpg')",
+        'header-dark-mobile': "url('/images/bg-mobile-dark.jpg')",
+        'header-light-desktop': "url('/images/bg-desktop-light.jpg')",
+        'header-light-mobile': "url('/images/bg-mobile-light.jpg')",
       },
     },
   },

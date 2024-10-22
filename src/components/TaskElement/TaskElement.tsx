@@ -17,10 +17,13 @@ export default function TaskElement({ completed,id,text }: Props) {
   const [taskValue,setTaskValue] = useState<string>("");
   const taskDiv = useRef<HTMLDivElement | null>(null);
   const editTaskDiv = useRef<HTMLDivElement | null>(null);
+  const input = useRef<HTMLInputElement | null>(null);
 
   const showEditSection = () => {
     taskDiv.current!.style.display = "none";
     editTaskDiv.current!.style.display = "flex";
+    input.current!.focus();
+    setTaskValue("");
   };
 
   const hideEditSection = () => {
@@ -29,7 +32,7 @@ export default function TaskElement({ completed,id,text }: Props) {
   };
 
   return (
-    <article className="w-full p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 last-of-type:border-b-0 last-of-type:rounded-b-md border-y-slate-400">
+    <article className="w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 last-of-type:border-b-0 last-of-type:rounded-b-md border-y-slate-400">
       <div
         ref={taskDiv}
         className="w-full h-full flex items-center justify-between">
@@ -59,6 +62,7 @@ export default function TaskElement({ completed,id,text }: Props) {
       >
         <input
           type="text"
+          ref={input}
           value={taskValue}
           onChange={(event) => setTaskValue(event.target.value)}
           maxLength={35}
@@ -68,7 +72,7 @@ export default function TaskElement({ completed,id,text }: Props) {
           <button
             onClick={() => {
               hideEditSection();
-              dispatch({ type: "EDIT",payload: id,content: taskValue });
+              if(taskValue.trim()) dispatch({ type: "EDIT",payload: id,content: taskValue });
             }}
             className="w-8 h-8 rounded-full flex items-center justify-center text-white bg-green-600">
             <FaCheck />

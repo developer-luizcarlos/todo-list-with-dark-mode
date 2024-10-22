@@ -3,7 +3,7 @@
 "use client";
 import { useState,useReducer,createContext,ReactNode } from "react";
 
-type State = {
+export type State = {
   id: number;
   task: string;
   completed: boolean;
@@ -24,7 +24,10 @@ type TodoContextType = {
 
 type ThemeValue = "light" | "dark";
 
-let initialState: State[] = [];
+let initialState: State[] = [
+  { id: 0,task: "Estudar React Native",completed: false },
+  { id: 1,task: "Criar o Whatsapp 2",completed: false }
+];
 
 const reducer = (state: State[],action: Action) => {
   switch(action.type) {

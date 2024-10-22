@@ -6,8 +6,15 @@ import { IoMoon } from "react-icons/io5";
 import { IoIosSunny } from "react-icons/io";
 
 export default function Todo() {
-  const { theme,changeTheme,state } = useContext(TodoContext)!;
+  const { theme,changeTheme,state,dispatch } = useContext(TodoContext)!;
   const [newTaskValue,setNewTaskValue] = useState<string>("");
+
+  const createNewTask = () => {
+    if(newTaskValue.trim()) {
+      dispatch({ type: "ADD",payload: newTaskValue });
+      setNewTaskValue("");
+    };
+  };
 
   return (
     <section className="w-[500px] fixed top-[35%] left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col gap-5">
@@ -21,7 +28,9 @@ export default function Todo() {
           </button>
         </div>
         <div className="w-full h-12 bg-very-light-gray rounded-md flex items-center gap-4 p-4">
-          <div className="w-6 h-6 border-2 rounded-full"></div>
+          <div
+            onClick={() => { createNewTask(); }}
+            className="w-6 h-6 border-2 rounded-full"></div>
           <input
             type="text"
             placeholder="Create a new todo..."

@@ -33,15 +33,15 @@ export default function TaskElement({ completed,id,text }: Props) {
       <div
         ref={taskDiv}
         className="w-full h-full flex items-center justify-between">
-        <div className="h-full flex items-center justify-center gap-5 whitespace-nowrap overflow-hidden text-ellipsis text-very-dark-grayish-blue">
-          <button>
+        <div className="h-full flex items-center justify-center gap-5 whitespace-nowrap overflow-hidden text-ellipsis ">
+          <button onClick={() => { dispatch({ type: "DONED",payload: id }); }}>
             {completed ?
               <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white bg-gradient-to-r from-sky-500 to-purple-400">
                 <FaCheck />
               </div> :
               <div className="w-6 h-6 border-2 rounded-full"></div>}
           </button>
-          <div className="w-[80%] h-full whitespace-nowrap overflow-hidden text-ellipsis">
+          <div className={completed ? "w-[80%] h-full whitespace-nowrap overflow-hidden text-ellipsis text-dark-grayish-blue" : "w-[80%] h-full whitespace-nowrap overflow-hidden text-ellipsis text-very-dark-grayish-blue"}>
             <p
               onClick={() => showEditSection()}
               className={completed ? "line-through" : ""}>{text}</p>

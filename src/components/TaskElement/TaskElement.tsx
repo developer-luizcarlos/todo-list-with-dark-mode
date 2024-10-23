@@ -72,7 +72,10 @@ export default function TaskElement({ completed,id,text }: Props) {
           <button
             onClick={() => {
               hideEditSection();
-              if(taskValue.trim()) dispatch({ type: "EDIT",payload: id,content: taskValue });
+              if(taskValue.trim()) {
+                dispatch({ type: "EDIT",payload: id,content: taskValue });
+                if(completed) dispatch({ type: "DONED",payload: id });
+              };
             }}
             className="w-8 h-8 rounded-full flex items-center justify-center text-white bg-green-600">
             <FaCheck />

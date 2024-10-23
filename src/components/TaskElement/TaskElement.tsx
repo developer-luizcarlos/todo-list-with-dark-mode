@@ -31,6 +31,20 @@ export default function TaskElement({ completed,id,text }: Props) {
     editTaskDiv.current!.style.display = "none";
   };
 
+  const editTask = () => {
+    if(taskValue.trim()) {
+      dispatch({ type: "EDIT",payload: id,content: taskValue });
+      if(completed) dispatch({ type: "DONED",payload: id });
+    }
+  };
+
+  const handleEditTask = (event: React.KeyboardEvent) => {
+    if(event.key == "Enter") {
+      hideEditSection();
+      editTask();
+    }
+  };
+
   return (
     <article className="w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 last-of-type:border-b-0 last-of-type:rounded-b-md border-y-slate-400">
       <div
@@ -65,6 +79,7 @@ export default function TaskElement({ completed,id,text }: Props) {
           ref={input}
           value={taskValue}
           onChange={(event) => setTaskValue(event.target.value)}
+          onKeyDown={handleEditTask}
           maxLength={35}
           className="w-full border-t-0 border-x-0 border-b-2 border-b-slate-400 outline-none whitespace-nowrap overflow-hidden text-ellipsis "
         />
@@ -72,10 +87,7 @@ export default function TaskElement({ completed,id,text }: Props) {
           <button
             onClick={() => {
               hideEditSection();
-              if(taskValue.trim()) {
-                dispatch({ type: "EDIT",payload: id,content: taskValue });
-                if(completed) dispatch({ type: "DONED",payload: id });
-              };
+              editTask();
             }}
             className="w-8 h-8 rounded-full flex items-center justify-center text-white bg-green-600">
             <FaCheck />

@@ -58,11 +58,17 @@ export default function TaskElement({ completed,id,text }: Props) {
               </div> :
               <div className="w-6 h-6 border-2 rounded-full"></div>}
           </button>
-          <div className={completed ? "w-[80%] h-full whitespace-nowrap overflow-hidden text-ellipsis text-dark-grayish-blue" : "w-[80%] h-full whitespace-nowrap overflow-hidden text-ellipsis text-very-dark-grayish-blue"}>
+          {completed ?
+            <s
+              onClick={() => showEditSection()}
+              className="text-dark-theme-very-dark-grayish-blue-1">
+              {text}
+            </s> :
             <p
               onClick={() => showEditSection()}
-              className={completed ? "line-through" : ""}>{text}</p>
-          </div>
+              className={completed ? "line-through" : ""}>
+              {text}
+            </p>}
         </div>
         <button
           onClick={() => dispatch({ type: "DEL",payload: id })}

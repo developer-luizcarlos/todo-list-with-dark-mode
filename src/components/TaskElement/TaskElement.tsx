@@ -39,9 +39,11 @@ export default function TaskElement({ completed,id,text }: Props) {
   };
 
   const handleEditTask = (event: React.KeyboardEvent) => {
-    if(event.key == "Enter") {
+    if(event.key === "Enter") {
       hideEditSection();
       editTask();
+    } else if(event.key === "Escape") {
+      hideEditSection();
     }
   };
 

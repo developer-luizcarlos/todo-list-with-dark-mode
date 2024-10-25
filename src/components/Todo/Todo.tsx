@@ -36,10 +36,10 @@ export default function Todo() {
             {theme === "light" ? <IoMoon /> : <IoIosSunny />}
           </button>
         </div>
-        <div className="w-full h-16 bg-very-light-gray rounded-md flex items-center gap-4 p-4">
+        <div className={`${ theme === "light" ? "w-full h-16 bg-very-light-gray rounded-md flex items-center gap-4 p-4" : "w-full h-16 bg-dark-theme-very-dark-desaturated-blue rounded-md flex items-center gap-4 p-4" }`}>
           <div
             onClick={() => { createNewTask(); }}
-            className="w-6 h-6 border-2 rounded-full"></div>
+            className={`${ theme === "light" ? "w-6 h-6 border-2 rounded-full" : "w-6 h-6 border-2  border-zinc-400  rounded-full" }`}></div>
           <input
             type="text"
             placeholder="Create a new todo..."
@@ -47,11 +47,11 @@ export default function Todo() {
             value={newTaskValue}
             onChange={(event) => { setNewTaskValue(event.target.value); }}
             onKeyDown={handleKeyPress}
-            className="placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent"
+            className={`${ theme === "light" ? "placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" : "placeholder:text-light-theme-very-light-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" }`}
           />
         </div>
       </div>
-      <div className="w-full flex flex-col shadow-xl shadow-slate-300">
+      <div className={`${theme === "light" ? "w-full flex flex-col shadow-xl shadow-slate-300" : "w-full flex flex-col"}`}>
         <div className="flex flex-col overflow-x-hidden custom-scroll max-h-40">
           {state.map((tasks) => {
             if(statusTaskShow === "all") {
@@ -80,22 +80,26 @@ export default function Todo() {
           })}
         </div>
         <div
-          className="w-full bg-very-light-gray rounded-b-md h-16 flex items-center justify-between p-4 text-very-dark-grayish-blue">
-          <span>{state.length} items left</span>
+          className={`${ theme === "light" ? "w-full bg-very-light-gray rounded-b-md h-16 flex items-center justify-between p-4 text-very-dark-grayish-blue" : "w-full bg-dark-theme-very-dark-desaturated-blue rounded-b-md h-16 flex items-center justify-between p-4 text-dark-grayish-blue" }`}>
+          <span
+            className={`${ theme === "light" ? "" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
+          >{state.length} items left</span>
           <div
             className="flex items-center justify-center gap-2"
           >
             <span
               onClick={() => setStatusTaskShow("all")}
-              className={`${ statusTaskShow === "all" ? "text-bright-blue" : "" }`}>All</span>
+              className={`${ statusTaskShow === "all" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>All</span>
             <span
               onClick={() => setStatusTaskShow("active")}
-              className={`${ statusTaskShow === "active" ? "text-bright-blue" : "" }`}>Active</span>
+              className={`${ statusTaskShow === "active" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>Active</span>
             <span
               onClick={() => setStatusTaskShow("completed")}
-              className={`${ statusTaskShow === "completed" ? "text-bright-blue" : "" }`}>Completed</span>
+              className={`${ statusTaskShow === "completed" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>Completed</span>
           </div>
-          <span>Clear Tasks</span>
+          <span
+            className={`${ theme === "light" ? "" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
+          >Clear Tasks</span>
         </div>
       </div>
     </section>

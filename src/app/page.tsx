@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <main
-      className={theme === "light" ? "w-full h-full bg-light-theme-very-light-grayish-blue " : ""}>
+      className={theme === "light" ? "w-full h-full bg-light-theme-very-light-grayish-blue " : "w-full h-full bg-dark-theme-very-dark-blue "}>
       <Todo />
     </main>
   );

@@ -48,7 +48,7 @@ export default function TaskElement({ completed,id,text }: Props) {
   };
 
   return (
-    <article className="w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 z-0 border-y-slate-400">
+    <article className={`${ theme === "light" ? "w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-400" : "w-full h-14 p-4 bg-dark-theme-very-dark-desaturated-blue first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-600" }`}>
       <div
         ref={taskDiv}
         className="w-full h-full flex items-center justify-between">
@@ -58,23 +58,23 @@ export default function TaskElement({ completed,id,text }: Props) {
               <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white bg-gradient-to-r from-sky-500 to-purple-400">
                 <FaCheck />
               </div> :
-              <div className="w-6 h-6 border-2 rounded-full"></div>}
+              <div className={`${ theme === "light" ? "w-6 h-6 border-2 rounded-full" : "w-6 h-6 border-2 border-zinc-400 rounded-full" }`}></div>}
           </button>
           {completed ?
             <s
               onClick={() => showEditSection()}
-              className="text-dark-theme-very-dark-grayish-blue-1">
+              className={`${ theme === "light" ? "text-dark-theme-very-dark-grayish-blue-1" : "text-dark-theme-very-dark-grayish-blue-1" }`}>
               {text}
             </s> :
             <p
               onClick={() => showEditSection()}
-              className={completed ? "line-through" : ""}>
+              className={`${ theme === "light" ? "text-very-dark-grayish-blue" : "text-light-theme-very-light-grayish-blue" }`}>
               {text}
             </p>}
         </div>
         <button
           onClick={() => dispatch({ type: "DEL",payload: id })}
-          className="text-xl cursor-pointer">
+          className={`${ theme === "light" ? "text-xl text-dark-theme-very-dark-blue cursor-pointer" : "text-xl text-very-light-grayish-blue cursor-pointer" }`}>
           <GoTrash />
         </button>
       </div>
@@ -89,7 +89,7 @@ export default function TaskElement({ completed,id,text }: Props) {
           onChange={(event) => setTaskValue(event.target.value)}
           onKeyDown={handleEditTask}
           maxLength={35}
-          className="w-full border-t-0 border-x-0 border-b-2 border-b-slate-400 outline-none whitespace-nowrap overflow-hidden text-ellipsis "
+          className={`${ theme === "light" ? "w-full border-t-0 border-x-0 border-b-2 border-b-slate-400 bg-transparent outline-none whitespace-nowrap overflow-hidden text-light-theme-very-dark-grayish-blue text-ellipsis " : "w-full border-t-0 border-x-0 border-b-2 border-b-slate-400 bg-transparent outline-none whitespace-nowrap overflow-hidden text-very-light-grayish-blue text-ellipsis " }`}
         />
         <div className="flex items-center justify-center gap-2">
           <button

@@ -5,9 +5,12 @@ import TaskElement from "../TaskElement/TaskElement";
 import { IoMoon } from "react-icons/io5";
 import { IoIosSunny } from "react-icons/io";
 
+type StatusTask = "all" | "active" | "completed";
+
 export default function Todo() {
   const { theme,changeTheme,state,dispatch } = useContext(TodoContext)!;
   const [newTaskValue,setNewTaskValue] = useState<string>("");
+  const [statusTaskShow,setStatusTaskShow] = useState<StatusTask>("all");
 
   const createNewTask = () => {
     if(newTaskValue.trim()) {
@@ -23,7 +26,7 @@ export default function Todo() {
   };
 
   return (
-    <section className="w-[500px] h-80 fixed top-[50%] left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col gap-5">
+    <section className="w-[540px] h-80 fixed top-[50%] left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col gap-5">
       <div className="flex flex-col gap-5">
         <div className="w-full flex items-center justify-between">
           <h1 className="text-3xl text-very-light-gray uppercase font-bold">todo</h1>
@@ -44,20 +47,55 @@ export default function Todo() {
             value={newTaskValue}
             onChange={(event) => { setNewTaskValue(event.target.value); }}
             onKeyDown={handleKeyPress}
-            className="placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis"
+            className="placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent"
           />
         </div>
       </div>
-      <div className="w-full overflow-x-hidden flex flex-col shadow-xl shadow-slate-300">
-        <div className="w-full max-h-[360px] overflow-x-hidden overflow-scroll custom-scroll over overflow-x-hidde">
-          {state.map((element) => {
-            return <TaskElement
-              key={element.id}
-              id={element.id}
-              text={element.task}
-              completed={element.completed}
-            />;
+      <div className="w-full flex flex-col shadow-xl shadow-slate-300">
+        <div className="flex flex-col overflow-x-hidden custom-scroll max-h-40">
+          {state.map((tasks) => {
+            if(statusTaskShow === "all") {
+              return <TaskElement
+                key={tasks.id}
+                completed={tasks.completed}
+                id={tasks.id}
+                text={tasks.task} />;
+            } else if(statusTaskShow === "completed") {
+              if(tasks.completed) {
+                return <TaskElement
+                  key={tasks.id}
+                  completed={tasks.completed}
+                  id={tasks.id}
+                  text={tasks.task} />;
+              }
+            } else if(statusTaskShow === "active") {
+              if(!tasks.completed) {
+                return <TaskElement
+                  key={tasks.id}
+                  completed={tasks.completed}
+                  id={tasks.id}
+                  text={tasks.task} />;
+              }
+            }
           })}
+        </div>
+        <div
+          className="w-full bg-very-light-gray rounded-b-md h-16 flex items-center justify-between p-4 text-very-dark-grayish-blue">
+          <span>{state.length} items left</span>
+          <div
+            className="flex items-center justify-center gap-2"
+          >
+            <span
+              onClick={() => setStatusTaskShow("all")}
+              className={`${ statusTaskShow === "all" ? "text-bright-blue" : "" }`}>All</span>
+            <span
+              onClick={() => setStatusTaskShow("active")}
+              className={`${ statusTaskShow === "active" ? "text-bright-blue" : "" }`}>Active</span>
+            <span
+              onClick={() => setStatusTaskShow("completed")}
+              className={`${ statusTaskShow === "completed" ? "text-bright-blue" : "" }`}>Completed</span>
+          </div>
+          <span>Clear Tasks</span>
         </div>
       </div>
     </section>

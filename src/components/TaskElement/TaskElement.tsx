@@ -48,7 +48,7 @@ export default function TaskElement({ completed,id,text }: Props) {
   };
 
   return (
-    <article className="w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 last-of-type:border-b-0 last-of-type:rounded-b-md border-y-slate-400">
+    <article className="w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 z-0 border-y-slate-400">
       <div
         ref={taskDiv}
         className="w-full h-full flex items-center justify-between">

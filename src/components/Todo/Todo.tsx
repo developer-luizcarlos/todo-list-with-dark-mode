@@ -51,7 +51,7 @@ export default function Todo() {
           />
         </div>
       </div>
-      <div className={`${theme === "light" ? "w-full flex flex-col shadow-xl shadow-slate-300" : "w-full flex flex-col"}`}>
+      <div className={`${ theme === "light" ? "w-full flex flex-col shadow-xl shadow-slate-300" : "w-full flex flex-col" }`}>
         <div className="flex flex-col overflow-x-hidden custom-scroll max-h-40">
           {state.map((tasks) => {
             if(statusTaskShow === "all") {
@@ -82,23 +82,24 @@ export default function Todo() {
         <div
           className={`${ theme === "light" ? "w-full bg-very-light-gray rounded-b-md h-16 flex items-center justify-between p-4 text-very-dark-grayish-blue" : "w-full bg-dark-theme-very-dark-desaturated-blue rounded-b-md h-16 flex items-center justify-between p-4 text-dark-grayish-blue" }`}>
           <span
-            className={`${ theme === "light" ? "" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
+            className={`${ theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
           >{state.length} items left</span>
           <div
             className="flex items-center justify-center gap-2"
           >
             <span
               onClick={() => setStatusTaskShow("all")}
-              className={`${ statusTaskShow === "all" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>All</span>
+              className={`${ statusTaskShow === "all" ? "text-bright-blue cursor-pointer" : theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-light-theme-very-light-grayish-blue duration-200 cursor-pointer" }`}>All</span>
             <span
               onClick={() => setStatusTaskShow("active")}
-              className={`${ statusTaskShow === "active" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>Active</span>
+              className={`${ statusTaskShow === "active" ? "text-bright-blue cursor-pointer" : theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-light-theme-very-light-grayish-blue cursor-pointer" }`}
+            >Active</span>
             <span
               onClick={() => setStatusTaskShow("completed")}
-              className={`${ statusTaskShow === "completed" ? "text-bright-blue cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}>Completed</span>
+              className={`${ statusTaskShow === "completed" ? "text-bright-blue cursor-pointer" : theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-light-theme-very-light-grayish-blue cursor-pointer" }`}>Completed</span>
           </div>
           <span
-            className={`${ theme === "light" ? "" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
+            className={`${ theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
           >Clear Tasks</span>
         </div>
       </div>

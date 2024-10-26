@@ -27,7 +27,8 @@ type ThemeValue = "light" | "dark";
 
 let initialState: State[] = [
   { id: 0,task: "Click on this text to edit",completed: false },
-  { id: 1,task: "You can mark as doned clicking in the circle",completed: false }
+  { id: 1,task: "You can mark as doned clicking in the circle",completed: false },
+  { id: 2,task: "You are able to delete your tasks",completed: false }
 ];
 
 const reducer = (state: State[],action: Action) => {

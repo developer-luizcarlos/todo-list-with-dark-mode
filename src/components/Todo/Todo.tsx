@@ -52,7 +52,7 @@ export default function Todo() {
         </div>
       </div>
       <div className={`${ theme === "light" ? "w-full flex flex-col shadow-xl shadow-slate-300" : "w-full flex flex-col" }`}>
-        <div className="flex flex-col overflow-x-hidden custom-scroll max-h-40">
+        <div className="flex flex-col overflow-x-hidden custom-scroll max-h-44">
           {state.map((tasks) => {
             if(statusTaskShow === "all") {
               return <TaskElement

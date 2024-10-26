@@ -32,7 +32,7 @@ body {
 .showOpacity {
   animation-name: show;
   animation-duration: 1s;
-  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   animation-delay: 0ms;
   animation-direction: normal;
   animation-fill-mode: forwards; /* Mantém o último estado da animação */

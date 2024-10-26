@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+
+body,
+html {
   width: 100dvw;
   height: 100dvh;
 }
@@ -11,6 +13,24 @@ body {
   overflow: hidden;
   transition: all .5s ease-in;
 }
+
+.header-light {
+  background-image: url("../../public/images/bg-desktop-light.jpg");
+}
+
+.header-dark {
+  background-image: url("../../public/images/bg-desktop-dark.jpg");
+}
+
+
+.header-light-mobile {
+  background-image: url("../../public/images/bg-mobile-light.jpg");
+}
+
+.header-dark-mobile {
+  background-image: url("../../public/images/bg-mobile-dark.jpg");
+}
+
 
 .custom-scroll::-webkit-scrollbar {
   width: 8px;
@@ -35,7 +55,8 @@ body {
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   animation-delay: 0ms;
   animation-direction: normal;
-  animation-fill-mode: forwards; /* Mantém o último estado da animação */
+  animation-fill-mode: forwards;
+  /* Mantém o último estado da animação */
 }
 
 @keyframes show {

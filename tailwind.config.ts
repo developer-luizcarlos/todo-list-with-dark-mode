@@ -35,12 +35,6 @@ const config: Config = {
         'dark-theme-very-dark-grayish-blue-1': 'hsl(233, 14%, 35%)',
         'dark-theme-very-dark-grayish-blue-2': 'hsl(237, 14%, 26%)'
       },
-      backgroundImage: {
-        'header-dark-desktop': "url('./images/bg-desktop-dark.jpg')",
-        'header-dark-mobile': "url('./images/bg-mobile-dark.jpg')",
-        'header-light-desktop': "url('./images/bg-desktop-light.jpg')",
-        'header-light-mobile': "url('./images/bg-mobile-light.jpg')",
-      },
     },
   },
   plugins: [],

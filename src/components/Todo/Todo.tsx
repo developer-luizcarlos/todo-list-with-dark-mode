@@ -47,7 +47,7 @@ export default function Todo() {
             value={newTaskValue}
             onChange={(event) => { setNewTaskValue(event.target.value); }}
             onKeyDown={handleKeyPress}
-            className={`${ theme === "light" ? "placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" : "placeholder:text-light-theme-very-light-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" }`}
+            className={`${ theme === "light" ? "placeholder:text-very-dark-grayish-blue w-full h-full outline-none text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" : "placeholder:text-light-theme-very-light-grayish-blue w-full h-full outline-none text-very-light-grayish-blue text-lg whitespace-nowrap overflow-hidden text-ellipsis bg-transparent" }`}
           />
         </div>
       </div>

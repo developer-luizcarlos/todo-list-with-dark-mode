@@ -18,6 +18,8 @@ export default function TaskElement({ completed,id,text }: Props) {
   const taskDiv = useRef<HTMLDivElement | null>(null);
   const editTaskDiv = useRef<HTMLDivElement | null>(null);
   const input = useRef<HTMLInputElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const trashIcon = useRef<any>(null);
 
   const showEditSection = () => {
     taskDiv.current!.style.display = "none";
@@ -48,7 +50,18 @@ export default function TaskElement({ completed,id,text }: Props) {
   };
 
   return (
-    <article className={`${ theme === "light" ? "w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-400" : "w-full h-14 p-4 bg-dark-theme-very-dark-desaturated-blue first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-600" }`}>
+    <article
+      onMouseEnter={() => {
+        if(trashIcon.current) {
+          trashIcon.current.classList.add("showOpacity");
+        }
+      }}
+      onMouseLeave={() => {
+        if(trashIcon.current) {
+          trashIcon.current.classList.remove("showOpacity");
+        }
+      }}
+      className={`${ theme === "light" ? "w-full h-14 p-4 bg-very-light-gray first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-400" : "w-full h-14 p-4 bg-dark-theme-very-dark-desaturated-blue first-of-type:rounded-t-md grid-rows-2 gap-2 place-items-center border-x-0 border-y-[1px] first-of-type:border-t-0 border-y-slate-600" }`}>
       <div
         ref={taskDiv}
         className="w-full h-full flex items-center justify-between">
@@ -73,8 +86,9 @@ export default function TaskElement({ completed,id,text }: Props) {
             </p>}
         </div>
         <button
+          ref={trashIcon}
           onClick={() => dispatch({ type: "DEL",payload: id })}
-          className={`${ theme === "light" ? "text-xl text-dark-theme-very-dark-blue cursor-pointer" : "text-xl text-very-light-grayish-blue cursor-pointer" }`}>
+          className={`${ theme === "light" ? "text-xl text-dark-theme-very-dark-blue cursor-pointer duration-500 ease-in-out opacity-0" : "text-xl text-very-light-grayish-blue cursor-pointer duration-500 ease-in-out opacity-0" }`}>
           <GoTrash />
         </button>
       </div>

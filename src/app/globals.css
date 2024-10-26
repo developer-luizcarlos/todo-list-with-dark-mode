@@ -22,9 +22,28 @@ body {
 
 .custom-scroll::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
+}
+
+.showOpacity {
+  animation-name: show;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-delay: 0ms;
+  animation-direction: normal;
+  animation-fill-mode: forwards; /* Mantém o último estado da animação */
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

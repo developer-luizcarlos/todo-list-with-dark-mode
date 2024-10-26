@@ -42,7 +42,7 @@ export default function Todo() {
             className={`${ theme === "light" ? "w-6 h-6 border-2 rounded-full" : "w-6 h-6 border-2  border-zinc-400  rounded-full" }`}></div>
           <input
             type="text"
-            placeholder="Create a new todo..."
+            placeholder="Insert a value and press Enter"
             maxLength={35}
             value={newTaskValue}
             onChange={(event) => { setNewTaskValue(event.target.value); }}

@@ -13,7 +13,8 @@ type Action =
   | { type: "ADD",payload: string; }
   | { type: "EDIT",payload: number,content: string; }
   | { type: "DONED"; payload: number; }
-  | { type: "DEL",payload: number; };
+  | { type: "DEL",payload: number; }
+  | { type: "ERASE"; };
 
 type TodoContextType = {
   state: State[];
@@ -54,6 +55,8 @@ const reducer = (state: State[],action: Action) => {
       });
     case "DEL":
       return state.filter((element) => element.id !== action.payload);
+    case "ERASE":
+      return [];
     default:
       return state;
   }

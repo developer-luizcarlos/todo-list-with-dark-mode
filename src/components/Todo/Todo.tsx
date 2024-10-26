@@ -99,6 +99,7 @@ export default function Todo() {
               className={`${ statusTaskShow === "completed" ? "text-bright-blue cursor-pointer" : theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-light-theme-very-light-grayish-blue cursor-pointer" }`}>Completed</span>
           </div>
           <span
+            onClick={() => { dispatch({ type: "ERASE" }); }}
             className={`${ theme === "light" ? "hover:text-dark-theme-very-dark-blue duration-200 cursor-pointer" : "hover:text-very-light-grayish-blue duration-200 cursor-pointer" }`}
           >Clear Tasks</span>
         </div>
